@@ -14,14 +14,14 @@ Temas:
 
 # NomedoProjeto
 
-**Número da Lista**: X<br>
-**Conteúdo da Disciplina**: XXXXXXXXXX<br>
+**Número da Lista**: 2<br>
+**Conteúdo da Disciplina**: Grafos2<br>
 
 ## Alunos
 |Matrícula | Aluno |
 | -- | -- |
-| xx/xxxxxx  |  xxxx xxxx xxxxx |
-| xx/xxxxxx  |  xxxx xxxx xxxxx |
+| 18/0123203  |  João Pedro Alves da Silva Chaves |
+| 19/0026243  |  Dafne Moretti Moreira |
 
 ## Sobre 
 Descreva os objetivos do seu projeto e como ele funciona. 
