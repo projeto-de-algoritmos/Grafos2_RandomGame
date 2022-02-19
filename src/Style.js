@@ -10,3 +10,17 @@ export const BackgroundContainer = styled.div`
     background-color: #287233;
 `;
 
+export const TextHomePage = styled.div`
+    color: white;
+    font-weight: 700;
+    padding: 0.5%;
+    font-size: 400%;
+    font-family: 'Neucha', cursive;
+`;
+
+export const SubTextHomePage = styled.div`
+    font-family: 'Sacramento', cursive;
+    color: white;
+    font-size: 200%;
+    padding: 0.5%;
+`;

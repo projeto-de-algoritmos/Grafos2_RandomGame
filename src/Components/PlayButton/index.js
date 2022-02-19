@@ -1,13 +1,14 @@
 import React from 'react';
+import { ButtonContainer, ButtonStart } from './Style'
 
 const PlayButton = ({
     onClick
 }) => {
     
      return (
-       <div>
-        <button onClick={onClick}>Começar</button>
-       </div>
+       <ButtonContainer>
+        <ButtonStart onClick={onClick}>Começar</ButtonStart>
+       </ButtonContainer>
      );
    };
    

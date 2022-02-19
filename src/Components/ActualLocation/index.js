@@ -18,11 +18,11 @@ import SunkenDesert from '../../Images/SunkenDesert/SunkenDesert.png';
 import Truce from '../../Images/Truce/Truce.png';
 import TruceCanyon from '../../Images/TruceCanyon/TruceCanyon.png';
 import ZenanBridge from '../../Images/ZenanBridge/ZenanBridge.png';
-import { ActualLocationContainer } from './Style'
+import { ActualLocationContainer, ButtonRestart } from './Style'
 
 
 const ActualLocation = ({
-    location
+    location, onClickToHome
 }) => {
 
   let imageLocation = "";
@@ -98,6 +98,7 @@ const ActualLocation = ({
           width: '40%',
         }}
       />
+      <ButtonRestart onClick={onClickToHome}>Recomeçar</ButtonRestart>
     </ActualLocationContainer>
   );
 };
