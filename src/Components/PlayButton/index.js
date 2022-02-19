@@ -1,12 +1,12 @@
 import React from 'react';
 
 const PlayButton = ({
-    title, addItem, removeItem
+    onClick
 }) => {
     
      return (
        <div>
-        <button>Começar</button>
+        <button onClick={onClick}>Começar</button>
        </div>
      );
    };
