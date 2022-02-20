@@ -12,10 +12,6 @@ function HomePage () {
   const [score, setScore] = useState(0);
 
   useEffect(() => {
-    console.log("teste");
-    if(homePage === false){
-      console.log(save[1]);
-    }
   },[homePage])
 
   return (

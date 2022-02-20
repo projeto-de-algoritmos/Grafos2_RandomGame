@@ -15,8 +15,8 @@ export const MapContainer = styled.div`
 
 export const ResultsInterface = styled.div`
     width: 30vw;
-    padding: 2%;
-    height: 100%;
+    padding: 1vh 2% 1vh 2%;
+    height: 98vh;
 `;
 
 export const ButtonRestart = styled.div`
@@ -104,6 +104,13 @@ export const ResultLoading  = styled.div`
 `;
 
 export const ResultLose  = styled.div`
+    font-size: 25px;
+    font-family: 'Neucha', cursive;
+    color: white;
+    padding: 3% 0% 0% 0%;
+`;
+
+export const SolutionPath  = styled.div`
     font-size: 25px;
     font-family: 'Neucha', cursive;
     color: white;

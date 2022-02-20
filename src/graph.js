@@ -6,7 +6,7 @@ export default function solve() {
         if(!graph[id])
         graph[id] = {};
         layout[id].forEach(function(aid) {
-        graph[id][aid] = Math.floor(Math.random() * (5 + 1) + 3);
+        graph[id][aid] = Math.floor(Math.random() * (25 + 1) + 3);
         arestas.push([id, aid, graph[id][aid]])
         });
     }

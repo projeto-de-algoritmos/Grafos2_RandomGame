@@ -20,17 +20,15 @@ import Truce from '../../Images/Truce/Truce.png';
 import TruceCanyon from '../../Images/TruceCanyon/TruceCanyon.png';
 import ZenanBridge from '../../Images/ZenanBridge/ZenanBridge.png';
 import { ActualLocationContainer, ButtonRestart, ArestaDiv, ArestaContainer, MapContainer, ResultsInterface, History, Placar,
-   TextoPlacar, NumeroPlacar, TextResult, ResultWin, ResultLose, ResultLoading, WhereGo
+   TextoPlacar, NumeroPlacar, TextResult, ResultWin, ResultLose, ResultLoading, WhereGo, SolutionPath,
 } from './Style'
 
 
 const ActualLocation = ({
     onClickToHome, solution, arestas, score, setScore
 }) => {
-  const [teste2, setTeste2] = useState(true);
   const [location, setLocation] = useState("Sun Keep");
   const [ganhou, setGanhou] = useState(null);
-  let cont = 0;
   let imageLocation = "";
 
   var arestasLocation = [];
@@ -48,11 +46,10 @@ const ActualLocation = ({
 
   const finishGame = () => {
     if(location === 'Guardia Castle'){
-      console.log('cheguei');
-      if(score == solution.dist){
+      if(score === solution.dist){
         setGanhou(true)
       }
-      else if(score != solution.dist){
+      else if(score !== solution.dist){
         setGanhou(false)
       }
     }
@@ -61,10 +58,6 @@ const ActualLocation = ({
 
   useEffect(() => {
     adicionaArestas();
-    // console.log(location);
-    console.log(score);
-    // console.log('arestas do location = ', arestas);
-    console.log(solution);
     finishGame();
   }, [location]);
 
@@ -133,7 +126,7 @@ const ActualLocation = ({
       imageLocation = ""
   };
 
-  const [teste, setTeste] = useState(false);
+  var solutionPath = solution.join(", ");
 
   return (
     <ActualLocationContainer>
@@ -169,7 +162,19 @@ const ActualLocation = ({
             <NumeroPlacar>{score} km percorridos até agora</NumeroPlacar>
         </Placar>
         <TextResult>Resultado</TextResult>
-        { ganhou ? <ResultWin>Oba! Você resgatou o tesouro.</ResultWin> : (ganhou == false) ? <ResultLose>Você perdeu! :( O seu reino entrou em guerra. O menor caminho tinha {solution.dist} km de distância de Sun Keep</ResultLose> : <ResultLoading>Loading...</ResultLoading>}
+        { ganhou ?
+          <ResultWin>Oba! Você resgatou o tesouro.</ResultWin>
+          : (ganhou === false)
+            ? 
+            <div>
+              <ResultLose>
+                Você perdeu! :( O seu reino entrou em guerra. O menor caminho tinha {solution.dist} km de distância de Sun Keep.
+              </ResultLose>  
+              <SolutionPath>
+                O caminho mais curto é: {solutionPath}!
+              </SolutionPath>
+            </div>
+            : <ResultLoading>Loading...</ResultLoading>}
         <ButtonRestart onClick={onClickToHome}>Voltar para Home</ButtonRestart>
       </ResultsInterface>
     </ActualLocationContainer>
