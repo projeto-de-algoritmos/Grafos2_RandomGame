@@ -8,9 +8,11 @@ import solve from './graph';
 
 function HomePage () {
   var [homePage, setHomePage] = useState(true);
+  const [score, setScore] = useState(0);
+  let save = solve();
+  let solution = save[0];
+  let arestas = save[1];
 
-  solve();
-  
   useEffect(() => {
   },[homePage])
 
@@ -31,7 +33,14 @@ function HomePage () {
         />
         <PlayButton onClick={() => { setHomePage(false) }}></PlayButton>
       </BackgroundContainer> :
-      <div><ActualLocation location="Cathedral" onClickToHome={() => { setHomePage(true) }}></ActualLocation></div>
+      <div>
+        <ActualLocation
+          onClickToHome={() => { setHomePage(true); setScore(0)}}
+          solution={solution}
+          arestas={arestas}
+          score={score}
+          setScore={setScore}
+          ></ActualLocation></div>
       }
     </div>
   );

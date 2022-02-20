@@ -1,5 +1,17 @@
 //dijkstra solve graph starting at s
 export default function solve() {
+
+    var arestas = [];
+
+    for(var id in layout) {
+        if(!graph[id])
+        graph[id] = {};
+        layout[id].forEach(function(aid) {
+        graph[id][aid] = Math.floor(Math.random() * (5 + 1) + 3);
+        arestas.push([id, aid, graph[id][aid]])
+        });
+    }
+
     var s = 'Sun Keep';
     var destino = 'Guardia Castle';
     var solutions = {};
@@ -43,45 +55,50 @@ export default function solve() {
       //extend parent's cost
       solutions[nearest].dist = dist;
     }
+
+    let solution = [];
     for(var x in solutions) {
         if(x === destino){
-            console.log(" -> " + x + ": [" + solutions[x].join(", ") + "]   (dist:" + solutions[x].dist + ")");
+            solution = solutions[x];
+            // console.log(" -> " + x + ": [" + solutions[x].join(", ") + "]   (dist:" + solutions[x].dist + ")");
         }
     }
-    
-    return solutions;
+    return [solution, arestas];
   }
   //create graph
-  var graph = {};
-  
-  var layout = {
-    'Sun Keep': ['Ozzies Fort','Northern Ruins'],
-    'Ozzies Fort': ['Magic Cave 1'],
-    'Norther Ruins': ['Choras','Giants Claw'],
-    'Choras': ['Giants Claw'],
-    'Giants Claw': ['Magic Cave 1'],
-    'Magic Cave 1': ['Magus Lair', 'Magic Cave 2'],
-    'Magus Lair': ['Truce'],
-    'Magic Cave 2': ['Denadoro Mtns','Fionas Villa'],
-    'Fionas Villa': ['Sunken Desert'],
-    'Sunken Desert': ['Porre', 'Dorino'],
-    'Porre': ['Cursed Woods'],
-    'Cursed Woods': ['Zenan Bridge'],
-    'Denadoro Mtns': ['Dorino'],
-    'Dorino': ['Zenan Bridge'],
-    'Zenan Bridge': ['Cathedral', 'Guardia Forest', 'Truce'],
-    'Cathedral': ['Guardia Castle'],
-    'Guardia Forest': ['Cathedral', 'Truce'],
-    'Truce': ['Truce Canyon'],
-    'Truce Canyon': ['Guardia Castle']
-  }
+    var graph = {};
+    
+    var layout = {
+        'Sun Keep': ['Ozzies Fort','Northern Ruins'],
+        'Ozzies Fort': ['Magic Cave 1'],
+        'Northern Ruins': ['Choras','Giants Claw'],
+        'Choras': ['Giants Claw'],
+        'Giants Claw': ['Magic Cave 1'],
+        'Magic Cave 1': ['Magus Lair', 'Magic Cave 2'],
+        'Magus Lair': ['Truce'],
+        'Magic Cave 2': ['Denadoro Mtns','Fionas Villa'],
+        'Fionas Villa': ['Sunken Desert'],
+        'Sunken Desert': ['Porre', 'Dorino'],
+        'Porre': ['Cursed Woods'],
+        'Cursed Woods': ['Zenan Bridge'],
+        'Denadoro Mtns': ['Dorino'],
+        'Dorino': ['Zenan Bridge'],
+        'Zenan Bridge': ['Cathedral', 'Guardia Forest', 'Truce'],
+        'Cathedral': ['Guardia Castle'],
+        'Guardia Forest': ['Cathedral', 'Truce'],
+        'Truce': ['Truce Canyon'],
+        'Truce Canyon': ['Guardia Castle']
+    }
 
-  for(var id in layout) {
-    if(!graph[id])
-      graph[id] = {};
-    layout[id].forEach(function(aid) {
-      graph[id][aid] = Math.floor(Math.random() * (5 + 1) + 3);
-    });
-  }
+    // function generateWeights (){
+    //     for(var id in layout) {
+    //         if(!graph[id])
+    //         graph[id] = {};
+    //         layout[id].forEach(function(aid) {
+    //         graph[id][aid] = Math.floor(Math.random() * (5 + 1) + 3);
+    //         arestas.push([id, aid, graph[id][aid]])
+    //         });
+    //     }
+    // }
 
-  //console.log(graph);
+
