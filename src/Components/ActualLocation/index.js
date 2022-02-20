@@ -19,7 +19,9 @@ import SunkenDesert from '../../Images/SunkenDesert/SunkenDesert.png';
 import Truce from '../../Images/Truce/Truce.png';
 import TruceCanyon from '../../Images/TruceCanyon/TruceCanyon.png';
 import ZenanBridge from '../../Images/ZenanBridge/ZenanBridge.png';
-import { ActualLocationContainer, ButtonRestart, ArestaDiv, ArestaContainer, MapContainer, ResultsInterface } from './Style'
+import { ActualLocationContainer, ButtonRestart, ArestaDiv, ArestaContainer, MapContainer, ResultsInterface, History, Placar,
+   TextoPlacar, NumeroPlacar, TextResult, ResultWin, ResultLose, ResultLoading, WhereGo
+} from './Style'
 
 
 const ActualLocation = ({
@@ -27,6 +29,7 @@ const ActualLocation = ({
 }) => {
   const [teste2, setTeste2] = useState(true);
   const [location, setLocation] = useState("Sun Keep");
+  const [ganhou, setGanhou] = useState(null);
   let cont = 0;
   let imageLocation = "";
 
@@ -43,12 +46,26 @@ const ActualLocation = ({
 
   adicionaArestas();
 
+  const finishGame = () => {
+    if(location === 'Guardia Castle'){
+      console.log('cheguei');
+      if(score == solution.dist){
+        setGanhou(true)
+      }
+      else if(score != solution.dist){
+        setGanhou(false)
+      }
+    }
+  }
+
+
   useEffect(() => {
     adicionaArestas();
     // console.log(location);
     console.log(score);
     // console.log('arestas do location = ', arestas);
     console.log(solution);
+    finishGame();
   }, [location]);
 
   switch (location) {
@@ -131,8 +148,12 @@ const ActualLocation = ({
         />
       </MapContainer>
       <ResultsInterface>
-        <p>Você mora em Sun Keep e foi escolhido pelo rei para resgatar o tesouro roubado pelos cavalheiros de Guardia Castle. No entanto, se você demorar muito, o seu reino vai entrar em guerra com Guardia Castle. Por isso, é fundamental que pegue o menor caminho.</p>
-        <h1>Para onde deseja ir?</h1>
+        
+        <History>Você mora em Sun Keep e foi escolhido pelo rei para resgatar o tesouro
+          roubado pelos cavalheiros de Guardia Castle. 
+          No entanto, se você demorar muito, o seu reino vai entrar em guerra com Guardia Castle. 
+        Por isso, é fundamental que pegue o menor caminho.</History>
+        <WhereGo>Para onde deseja ir?</WhereGo>
         <ArestaContainer>
             { arestasLocation.map((aresta) => (
               <ArestaDiv onClick={() => { setScore((score+aresta[2])); setLocation(aresta[1])}}>
@@ -143,8 +164,13 @@ const ActualLocation = ({
             ))
             }
           </ArestaContainer>
-        {((score == solution.dist) ? <h1>Ganhou</h1> : <h1>Perdeu</h1>)}
-        <ButtonRestart onClick={onClickToHome}>Recomeçar</ButtonRestart>
+        <Placar>
+            <TextoPlacar>Placar</TextoPlacar>
+            <NumeroPlacar>{score} km percorridos até agora</NumeroPlacar>
+        </Placar>
+        <TextResult>Resultado</TextResult>
+        { ganhou ? <ResultWin>Oba! Você resgatou o tesouro.</ResultWin> : (ganhou == false) ? <ResultLose>Você perdeu! :( O seu reino entrou em guerra. O menor caminho tinha {solution.dist} km de distância de Sun Keep</ResultLose> : <ResultLoading>Loading...</ResultLoading>}
+        <ButtonRestart onClick={onClickToHome}>Voltar para Home</ButtonRestart>
       </ResultsInterface>
     </ActualLocationContainer>
   );
