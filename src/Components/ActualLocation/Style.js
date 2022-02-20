@@ -5,7 +5,15 @@ export const ActualLocationContainer = styled.div`
     height: 100vh;
     background-color: #287233;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+`;
+
+export const MapContainer = styled.div`
+    
+`;
+
+export const ResultsInterface = styled.div`
+    
 `;
 
 export const ButtonRestart = styled.div`
@@ -20,7 +28,7 @@ export const ButtonRestart = styled.div`
 `;
 
 export const ArestaDiv = styled.div`
-    background-color: yellow;
+    background-color: #DAA520;
     border-radius: 10px;
     width: max-content;
     padding: 1%;
@@ -32,7 +40,10 @@ export const ArestaDiv = styled.div`
 
 export const ArestaContainer  = styled.div`
     display: flex;
-    overflow: scroll;
     flex-direction: row;
     flex-wrap: wrap;
+`;
+
+export const ScoreBoard  = styled.div`
+    color: blue;
 `;

@@ -19,7 +19,7 @@ import SunkenDesert from '../../Images/SunkenDesert/SunkenDesert.png';
 import Truce from '../../Images/Truce/Truce.png';
 import TruceCanyon from '../../Images/TruceCanyon/TruceCanyon.png';
 import ZenanBridge from '../../Images/ZenanBridge/ZenanBridge.png';
-import { ActualLocationContainer, ButtonRestart, ArestaDiv, ArestaContainer } from './Style'
+import { ActualLocationContainer, ButtonRestart, ArestaDiv, ArestaContainer, MapContainer, ResultsInterface } from './Style'
 
 
 const ActualLocation = ({
@@ -27,6 +27,7 @@ const ActualLocation = ({
 }) => {
   const [teste2, setTeste2] = useState(true);
   const [location, setLocation] = useState("Sun Keep");
+  let cont = 0;
   let imageLocation = "";
 
   var arestasLocation = [];
@@ -36,23 +37,18 @@ const ActualLocation = ({
     for(let i = 0; i < arestas.length; i++){
       if(arestas[i][0] === location){
         arestasLocation.push(arestas[i])
-        // console.log(arestas[i]);
       }
-      // console.log('falhou');
     }
   }
 
   adicionaArestas();
 
-
-  // console.log(arestas.length);
-  // console.log(arestas);
-  // console.log(arestas);
-
   useEffect(() => {
     adicionaArestas();
-    console.log(location);
+    // console.log(location);
     console.log(score);
+    // console.log('arestas do location = ', arestas);
+    console.log(solution);
   }, [location]);
 
   switch (location) {
@@ -124,25 +120,32 @@ const ActualLocation = ({
 
   return (
     <ActualLocationContainer>
-      <img
-        src={imageLocation}
-        alt="Mapa do jogo"
-        style={{
-          width: '40%',
-          height: '50%',
-        }}
-      />
-      <ArestaContainer>
-        { arestasLocation.map((aresta) => (
-          <ArestaDiv onClick={() => { setScore((score+aresta[2])); setLocation(aresta[1])}}>
-            <p>
-              {aresta[0]} --> {aresta[1]}
-            </p>
-          </ArestaDiv>
-        ))
-        }
-      </ArestaContainer>
-      <ButtonRestart onClick={onClickToHome}>Recomeçar</ButtonRestart>
+      <MapContainer>
+        <img
+          src={imageLocation}
+          alt="Mapa do jogo"
+          style={{
+            width: '100%',
+            height: '100%',
+          }}
+        />
+      </MapContainer>
+      <ResultsInterface>
+        <p>Você mora em Sun Keep e foi escolhido pelo rei para resgatar o tesouro roubado pelos cavalheiros de Guardia Castle. No entanto, se você demorar muito, o seu reino vai entrar em guerra com Guardia Castle. Por isso, é fundamental que pegue o menor caminho.</p>
+        <h1>Para onde deseja ir?</h1>
+        <ArestaContainer>
+            { arestasLocation.map((aresta) => (
+              <ArestaDiv onClick={() => { setScore((score+aresta[2])); setLocation(aresta[1])}}>
+                <p>
+                 {aresta[1]}
+                </p>
+              </ArestaDiv>
+            ))
+            }
+          </ArestaContainer>
+        {((score == solution.dist) ? <h1>Ganhou</h1> : <h1>Perdeu</h1>)}
+        <ButtonRestart onClick={onClickToHome}>Recomeçar</ButtonRestart>
+      </ResultsInterface>
     </ActualLocationContainer>
   );
 };
