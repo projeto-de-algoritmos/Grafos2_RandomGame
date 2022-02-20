@@ -4,10 +4,13 @@ import PlayButton from './Components/PlayButton';
 import ActualLocation from './Components/ActualLocation';
 import { BackgroundContainer, TextHomePage, SubTextHomePage } from './Style';
 import Mapa from './Images/Mapa/mapa.png';
+import solve from './graph';
 
 function HomePage () {
   var [homePage, setHomePage] = useState(true);
 
+  solve();
+  
   useEffect(() => {
   },[homePage])
 
