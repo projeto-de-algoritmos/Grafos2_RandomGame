@@ -16,19 +16,41 @@
 Descreva os objetivos do seu projeto e como ele funciona. 
 
 ## Screenshots
-Adicione 3 ou mais screenshots do projeto em funcionamento.
+
+Quando acessar o sistema, verá a tela de inicial que apresenta um botão permitindo que você comece a jogar.
+![HomePage](/src/Images/random1.png.png)
+
+A ideia do jogo é apresentada e o mapa também. O usuário escolhe o lugar para onde quer ir, clicando nos botões que apresentam o nome dos lugares. 
+
+
+Caso ele escolha o menor caminho, ele consegue resgatar o tesouro antes do reino entrar em guerra.
+![Winner](/src/Images/random2.png.png)
+
+Caso não escolha o menor caminho, o reino entra em guerra e o jogo mostra qual era o caminho que ele deveria ter percorrido.
+![Lose](/src/Images/random3.png.png)
 
 ## Instalação 
-**Linguagem**: xxxxxx<br>
-**Framework**: (caso exista)<br>
-Descreva os pré-requisitos para rodar o seu projeto e os comandos necessários.
+**Linguagem**: JavaScript<br>
+**Framework**: ReactJS<br>
+
+#### Clone o repositório
+
+#### Caso esteja rodando o projeto pela primeira vez, utilize a seguinte sequência de comandos
+
+```npm install```
+
+```npm start```
+
+
+Após realizar esses passos, o site estará rodando na porta 3000.
 
 ## Uso 
-Explique como usar seu projeto caso haja algum passo a passo após o comando de execução.
+ 
+#### Caso já tenha rodado o projeto alguma vez, basta utilizar o comando
 
-## Outros 
-Quaisquer outras informações sobre seu projeto podem ser descritas abaixo.
+```npm start```
 
+Após realizar esses passos, o site estará rodando na porta 3000.
 
-
+## Apresentação 
 
