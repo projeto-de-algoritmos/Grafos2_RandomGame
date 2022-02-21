@@ -13,21 +13,25 @@
 | 19/0026243  |  Dafne Moretti Moreira |
 
 ## Sobre 
-Descreva os objetivos do seu projeto e como ele funciona. 
+O RandomGame é um jogo de sorte, onde os valores dos caminhos entre os locais do mapa são gerados de maneira completamente aleatória. O objetivo do jogador é resgatar o tesouro que foi roubado o mais rápido possível, por isso, ele deve chegar até 'Guardia Castle' pelo menor caminho. 
+
+Para que ele saiba quantos km ele já percorreu, um placar é apresentado na tela. À medida que ele escolhe um novo local para ir, o ponto amarelo no mapa (que representa sua localização), é atualizado juntamente com o placar. 
+
+Assim que ele chega no objetivo final, o resultado é apresentado informando se o jogador ganhou ou se perdeu, e qual era o menor caminho que ele deveria ter percorrido para ganhar, assim como a distância total do menor caminho.
 
 ## Screenshots
 
 Quando acessar o sistema, verá a tela de inicial que apresenta um botão permitindo que você comece a jogar.
-![HomePage](/src/Images/random1.png.png)
+![HomePage](/src/Images/random1.png)
 
 A ideia do jogo é apresentada e o mapa também. O usuário escolhe o lugar para onde quer ir, clicando nos botões que apresentam o nome dos lugares. 
-
+![Loading](/src/Images/random2.png)
 
 Caso ele escolha o menor caminho, ele consegue resgatar o tesouro antes do reino entrar em guerra.
-![Winner](/src/Images/random2.png.png)
+![Winner](/src/Images/random4.png)
 
 Caso não escolha o menor caminho, o reino entra em guerra e o jogo mostra qual era o caminho que ele deveria ter percorrido.
-![Lose](/src/Images/random3.png.png)
+![Lose](/src/Images/random3.png)
 
 ## Instalação 
 **Linguagem**: JavaScript<br>
